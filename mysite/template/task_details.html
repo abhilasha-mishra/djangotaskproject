@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for data in data %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-8 blog-main">
+            <h3 class="font-italic" style="background-color:#2D3002; text-align: center;color:white;font-size:70px;padding:20px;">
+                {{data.title}}
+            </h3>
+
+            <div class="blog-post">
+                <h2 class="blog-post-title" style="margin-top:60px;">{{data.task}}</h2>
+            </div>
+
+        </div><!-- /.blog-main -->
+    </div>
+</div>
+<br>
+<h3 style="margin-left:120px;">Submit Your Answers</h3>
+
+  <form  method="post" action="{% url 'home:apply' %}">
+    {% csrf_token %}
+    <div class="container">
+      <label for="ans"><b>Answers </b></label>
+      <input type="text" id="ans" placeholder="Enter ans" name="ans" required>
+
+        <button type="submit" style="width: 100%;" >Submit</button>
+    </div>
+
+  </form>
+</div>
+{% endfor %}
+{% endblock %}

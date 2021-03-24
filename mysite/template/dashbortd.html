@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div style="background-color:#c3c388;padding:10px;text-align: center">
+    <h1 style="margin:30px;"><b>Author Profile Details</b></h1>
+
+    <div class="row">
+        <div class="column" style="background-color:#aaa; border: 2px solid #c68c53;border-radius: 5px;">
+            <h2 style="margin-top:60px;">Author Name: {{user.username}}</h2>
+            <h4>Author Last Name : {{user.first_name}}</h4>
+            <h4>Author Email-Id : {{user.email}}</h4>
+        </div>
+        <div class="column" style="background-color:#bbb;border: 2px solid #c68c53;border-radius: 5px;">
+           <h2 style="margin-top:40px;padding:15px;">View And Manage Your Dashbord...</h2>
+            <h2 style="padding:15px;">You can see the Blogs Posted by you in the list right now.If you have not
+                Posted a Blog, You can Post a Blog by Clicking on (Create-Blogs).</h2>
+
+        </div>
+    </div>
+
+</div>
+<div style="padding: 15px;">
+    <h2>Questions and answers given by you. </h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Answers</th>
+            <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in applydata %}
+          <tr>
+            <td><a style="text-decoration:none;" href="{% url 'home:task_detail' i.id %}"><font color="black">{{forloop.counter}}.</font></a>
+            </td>
+
+            <td><a style="text-decoration:none;" href="{% url 'home:task_detail' i.id %}"><font color="black">{{i.ans}}.</font></a></td>
+
+            <td><a style="text-decoration:none;" href="{% url 'home:task_detail' i.id %}"><font color="black">{{i.status}}.</font></a></td>
+
+        </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<hr>
+<div style="padding: 15px;">
+    <h2>Your Created Blog-Post List </h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Titlae</th>
+            <th scope="col">Heade1</th>
+
+            <th scope="col">Subject1</th>
+
+            <th scope="col">Image</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in data %}
+        <tr>
+            <td><a style="text-decoration:none;" href="{% url 'home:blogpost' i.id %}"><font color="black">{{forloop.counter}}.</font></a>
+            </td>
+            <td><h4>Title</h4>
+                <a style="text-decoration:none;" href="{% url 'home:blogpost' i.id %}">{{i.title}}.</a><br><br>
+                <h4>Description</h4>
+                <a style="text-decoration:none;" href="{% url 'home:blogpost' i.id %}"><font color="black">{{i.hed1|truncatechars:30}}.</font></a>
+            </td>
+            <td><h4>Title</h4>
+                <a style="text-decoration:none;" href="{% url 'home:blogpost' i.id %}"><font
+                        color="black">{{i.hed2}}.</font></a><br><br>
+                <h4>Description</h4>
+                <a style="text-decoration:none;" href="{% url 'home:blogpost' i.id %}"><font color="black">{{i.p1|truncatechars:30}}.</font></a>
+            </td>
+            <td><h4>Title</h4>
+                <a style="text-decoration:none;" href="{% url 'home:blogpost' i.id %}"><font
+                        color="black">{{i.hed3}}.</font></a><br><br>
+                <h4>Description</h4>
+                <a style="text-decoration:none;" href="{% url 'home:blogpost' i.id %}"><font color="black">{{i.p3|truncatechars:30}}.</font></a>
+            </td>
+            <td><a style="text-decoration:none;" href="{% url 'home:blogpost' i.id %}"><font
+                    color="black">{{i.image}}.</font></a></td>
+
+            <td><a href="{% url 'home:edit' i.id %}">edit</a></td>
+            <td><a href="{% url 'home:delete' i.id %}">delete</a></td>
+        </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

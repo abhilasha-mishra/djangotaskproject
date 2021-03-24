@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block title%} home page{% endblock %}
+{% block css %}{% endblock %}
+{% block body %}
+{% load static %}
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+</style>
+  <div style=" background-color:#b35900;opacity: 0.8;;color:white;font-size:20px;margin-top:0px;">
+     <div  class="jumbotron" >
+    <div class="container" >
+      <h6 class="display-3" style="font-size:85px;text-shadow: 6px 6px 15px red;color:red;text-align: center"><b>Programming BlogPost </b></h6>
+<marquee width="100%" direction="left" height="90px" scrollamount="12">
+      <h6 style="font-size:35px;margin-top:40px;color:#00004d">A programming language is a formal language comprising a set of instructions that produce various kinds of output. Programming languages are used in computer programming to implement algorithms.</h6>
+</marquee><!--      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>-->
+    </div>
+  </div>
+
+    </div>
+<div id="blog" class="blog-area">
+    <div class="blog-inner area-padding">
+        <div class="blog-overly"></div>
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline text-center">
+                        <h2>Latest BlogPost</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Start Left Blog -->
+                {% for i in post %}
+                <div class="col-md-4 col-sm-4 col-xs-12" style="padding:30px;height:600px;width":300px;>
+
+                    <div class="card">
+                        <img src="/media/{{i.image}}" alt="Avatar" style="width:100% ;height:250px;">
+                    <div class="blog-meta" style="margin:10px;">
+                  <p>
+                                          <span class="comments-type">
+                    <i class="fa fa-comment-o"></i>
+                    <a href="#"><b>Author:</b>{{i.created_user}}</a>
+                  </span>
+                  </p>
+
+                  <span class="date-type">
+                    <i class="fa fa-calendar"></i>{{i.created_date}}
+                  </span>
+                        </div>
+                        <div class="container">
+                            <h4><b>{{i.title|truncatewords:5}}</b></h4>
+                            <h6>{{i.Hed1}}</h6>
+                            <p>{{i.p1|truncatewords:15}}</p>
+                            <p><a href="/blogpost/{{i.id}}" class="stretched-link">Continue reading</a></p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- End Right Blog-->
+            </div>
+
+        </div>
+    </div>
+</div><!-- End Blog Section -->
+
+
+{% endblock %}
+
+</div>
+{% block js %}
+<script>
+</script>
+{% endblock %}

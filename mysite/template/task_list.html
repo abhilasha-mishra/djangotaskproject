@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div style="padding: 15px;">
+    <h2>Task List </h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">S.No.</th>
+            <th scope="col">Titlae</th>
+            <th scope="col">task</th>
+            <th scope="col">Uploded-By</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in data %}
+        <tr>
+            <td><a style="text-decoration:none;" href="{% url 'home:task_detail' i.id %}"><font color="black">{{forloop.counter}}.</font></a>
+            </td>
+            <td><a style="text-decoration:none;" href="{% url 'home:task_detail' i.id %}">{{i.title}}.</a><br><br></td>
+
+            <td><a style="text-decoration:none;" href="{% url 'home:task_detail' i.id %}"><font color="black">{{i.task|truncatechars:30}}.</font></a></td>
+
+            <td><a style="text-decoration:none;" href="{% url 'home:task_detail' i.id %}"><font color="black">{{i.created_user}}.</font></a></td>
+
+        </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
+<script>
+// Get the modal
+var modal = document.getElementById('id03');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+</script>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h3>Create Blog Form</h3>
+
+<div class="container" style="width:650; height:850">
+  <form action="{% url 'home:create_blog' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="{{data.title}}" >
+
+          <label for="hed1">Hed1</label>
+    <input type="text" id="hed1" name="hed1" value="{{data.hed1}}">
+
+          <label for="hed2">Hed2</label>
+    <input type="text" id="hed2" name="hed2" value="{{data.hed2}}">
+
+    <label for="hed3">Hed3</label>
+    <input type="text" id="hed3" name="hed3" value="{{data.hed3}}">
+
+     <label for="p1">Subject1</label>
+    <textarea id="p1" name="p1" placeholder="Write something.." style="height:70px">{{data.p1}}</textarea>
+
+      <label for="p2">Subject2</label>
+    <textarea id="p2" name="p2" placeholder="Write something.." style="height:70px">{{data.p2}}</textarea>
+
+
+    <label for="p3">Subject3</label>
+    <textarea id="p3" name="p3" placeholder="Write something.." style="height:70px">{{data.p3}}</textarea>
+
+    <label for="image">Upload-Image</label>
+      <img style="width:120px; height: 50px;padding: 10px;" src="/media/{{data.image}}">
+    <input type="file" id="image" name="image" required><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+{% endblock %}
